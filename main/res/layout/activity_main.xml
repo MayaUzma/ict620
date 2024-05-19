@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Top Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="#FF9E37"
+        android:elevation="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Watt Wise"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/etUsage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:hint="Enter electricity usage in kWh"
+        android:inputType="numberDecimal"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/etRebate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etUsage"
+        android:layout_marginTop="8dp"
+        android:hint="Enter rebate percentage (0-5%)"
+        android:inputType="numberDecimal"
+        android:padding="16dp" />
+
+    <RadioGroup
+        android:id="@+id/rgEnergySource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etRebate"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rbStandardElectricity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Standard Electricity" />
+        <RadioButton
+            android:id="@+id/rbGreenEnergy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Green Energy" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etRebate"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Calculate" />
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCalculate"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Clear" />
+
+    <TextView
+        android:id="@+id/tvFinalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnClear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:text="Final Cost (RM)"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:id="@+id/tblResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvFinalCost"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="38dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+
+            <TextView
+                android:gravity="center"
+                android:text="Description"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="center"
+                android:text="Amount (RM)"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#000000" />
+
+        <TableRow>
+
+            <TextView
+                android:gravity="center"
+                android:text="Total Charges"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvTotalChargesAmount"
+                android:gravity="center"
+                android:text="0.00"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:gravity="center"
+                android:text="Total Rebate"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvTotalRebateAmount"
+                android:gravity="center"
+                android:text="0.00"
+                android:textSize="18sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:gravity="center"
+                android:text="Final Cost After Rebate"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvFinalCostAmount"
+                android:gravity="center"
+                android:text="0.00"
+                android:textSize="18sp" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_toolbar"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#3F51B5"
+        android:text="About" />
+
+    <!-- Bottom Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bottom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="#FF9E37"
+        android:elevation="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="© 2024 by Mayamin Uzma. \nAll rights reserved."
+            android:textAlignment="center"
+            android:textColor="#393636"
+            android:textSize="16sp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+</RelativeLayout>
